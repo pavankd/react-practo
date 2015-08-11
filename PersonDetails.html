@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+
+    var Person = React.createClass({
+      getInitialState: function(){
+        console.log(this.props)
+        return null;
+      },
+      render: function(){
+        return(
+          <div>
+            <h2>{this.props.name}</h2>
+            <p>{this.props.description}</p>
+          </div>
+          );
+      }
+
+    });
+
+     /*Person List class*/
+    var PersonList = React.createClass({
+      render: function(){
+        return(
+          <div>
+          PersonList Component text
+          <Person name="pavan" description="fatty fellow"/>
+          </div>
+          );
+      }
+    });
+
+    /*Person form class*/
+    var PersonForm = React.createClass({
+      render: function(){
+        return(
+          <div>
+            Person From compoenet text
+          </div>
+          );
+      }
+    });
+
+    /*Person Details class*/
+    var PersonDetail = React.createClass({
+      render : function(){
+        return(
+          <div>
+            Persond Details Component text
+            <PersonList/>
+            <PersonForm/>
+          </div>
+          );
+      }
+    });
+
+    React.render(
+<PersonDetail />,document.getElementById('example')
+      );
+
+    </script>
+  </body>
+</html>
