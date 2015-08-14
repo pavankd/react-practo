@@ -29,10 +29,21 @@
      /*Person List class*/
     var PersonList = React.createClass({
       render: function(){
-        return(
+       
+          var personNodes = this.props.data.map(function(person,index){
+
+            return (
+               <Person 
+                     key={index}
+                     name={person.name}
+                     description={person.description} />
+              )
+          });
+           return(
           <div>
-          PersonList Component text
-          <Person name="pavan" description="fatty fellow"/>
+         // PersonList Component text
+          //<Person name="pavan" description="fatty fellow"/>
+          PersonList.{personNodes}
           </div>
           );
       }
@@ -55,15 +66,19 @@
         return(
           <div>
             Persond Details Component text
-            <PersonList/>
+            <PersonList data={this.props.data}/>
             <PersonForm/>
           </div>
           );
       }
     });
 
+window.personData = [{name:"Pavan Dasari",description:"this is pavan dasari"},
+                      {name:"vamsi Dasari",description:"Pavan Dasari Brother"},
+                      {name:"Swarna Dasari",description:"Vamsi Dasari wife"}];
+
     React.render(
-<PersonDetail />,document.getElementById('example')
+<PersonDetail  data={window.personData}/>,document.getElementById('example')
       );
 
     </script>
